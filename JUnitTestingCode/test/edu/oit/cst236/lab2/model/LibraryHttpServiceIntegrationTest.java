@@ -56,16 +56,6 @@ public class LibraryHttpServiceIntegrationTest {
 		IWebClient anotherClient = Mockito.mock(IWebClient.class);		
 		newLibService.setWebClient(anotherClient);
 	}
-	
-	@Test
-	public void testGetLibraries() throws InvalidRequestException, ConnectionException, ParseException {
-		Mockito.when(mockClient.query("http://www.fake.com/libraries")).thenReturn("[{'id' : 'id1', 'name' : 'name1'}, {'id' : 'id2', 'name' : 'name2'}]");
-		mockLibraryParser.parseLibraries("[{'id' : 'id1', 'name' : 'name1'}, {'id' : 'id2', 'name' : 'name2'}]");
-		List<ILibrary> libraries = sut.getLibraries();
-
-		Assert.assertEquals("id1", libraries.get(0).getId());
-		Assert.assertEquals("id2", libraries.get(1).getId());
-	}
 
 	@Test
 	public void testGetLibrary() {
